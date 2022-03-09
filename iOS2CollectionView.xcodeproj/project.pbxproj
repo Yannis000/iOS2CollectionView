@@ -12,8 +12,12 @@
 		08AD090427D8BBDB00015C50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD090327D8BBDB00015C50 /* ViewController.swift */; };
 		08AD090727D8BBDB00015C50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AD090527D8BBDB00015C50 /* Main.storyboard */; };
 		08AD090A27D8BBDB00015C50 /* iOS2CollectionView.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 08AD090827D8BBDB00015C50 /* iOS2CollectionView.xcdatamodeld */; };
-		08AD090C27D8BBDD00015C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08AD090B27D8BBDD00015C50 /* Assets.xcassets */; };
 		08AD090F27D8BBDD00015C50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08AD090D27D8BBDD00015C50 /* LaunchScreen.storyboard */; };
+		08AD091727D8BC3D00015C50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08AD091627D8BC3D00015C50 /* Assets.xcassets */; };
+		08AD091927D8BC5200015C50 /* landmarkData.json in Resources */ = {isa = PBXBuildFile; fileRef = 08AD091827D8BC5200015C50 /* landmarkData.json */; };
+		08AD091B27D8BCB800015C50 /* Landmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD091A27D8BCB800015C50 /* Landmark.swift */; };
+		08AD091D27D8BD8700015C50 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD091C27D8BD8700015C50 /* DataManager.swift */; };
+		08AD092327D8DBA300015C50 /* LandmarkItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD092227D8DBA300015C50 /* LandmarkItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +27,13 @@
 		08AD090327D8BBDB00015C50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		08AD090627D8BBDB00015C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		08AD090927D8BBDB00015C50 /* iOS2CollectionView.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOS2CollectionView.xcdatamodel; sourceTree = "<group>"; };
-		08AD090B27D8BBDD00015C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08AD090E27D8BBDD00015C50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08AD091027D8BBDD00015C50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08AD091627D8BC3D00015C50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/Mock_iOS_Avance/Assets.xcassets; sourceTree = "<group>"; };
+		08AD091827D8BC5200015C50 /* landmarkData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = landmarkData.json; path = ../../../Downloads/Mock_iOS_Avance/landmarkData.json; sourceTree = "<group>"; };
+		08AD091A27D8BCB800015C50 /* Landmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmark.swift; sourceTree = "<group>"; };
+		08AD091C27D8BD8700015C50 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		08AD092227D8DBA300015C50 /* LandmarkItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +66,36 @@
 		08AD08FE27D8BBDB00015C50 /* iOS2CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				08AD091F27D8C23D00015C50 /* manager */,
+				08AD091E27D8C23500015C50 /* model */,
 				08AD08FF27D8BBDB00015C50 /* AppDelegate.swift */,
 				08AD090127D8BBDB00015C50 /* SceneDelegate.swift */,
 				08AD090327D8BBDB00015C50 /* ViewController.swift */,
 				08AD090527D8BBDB00015C50 /* Main.storyboard */,
-				08AD090B27D8BBDD00015C50 /* Assets.xcassets */,
 				08AD090D27D8BBDD00015C50 /* LaunchScreen.storyboard */,
 				08AD091027D8BBDD00015C50 /* Info.plist */,
 				08AD090827D8BBDB00015C50 /* iOS2CollectionView.xcdatamodeld */,
+				08AD091627D8BC3D00015C50 /* Assets.xcassets */,
+				08AD091827D8BC5200015C50 /* landmarkData.json */,
 			);
 			path = iOS2CollectionView;
+			sourceTree = "<group>";
+		};
+		08AD091E27D8C23500015C50 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				08AD091A27D8BCB800015C50 /* Landmark.swift */,
+				08AD092227D8DBA300015C50 /* LandmarkItemCell.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		08AD091F27D8C23D00015C50 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				08AD091C27D8BD8700015C50 /* DataManager.swift */,
+			);
+			path = manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +157,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				08AD090F27D8BBDD00015C50 /* LaunchScreen.storyboard in Resources */,
-				08AD090C27D8BBDD00015C50 /* Assets.xcassets in Resources */,
+				08AD091927D8BC5200015C50 /* landmarkData.json in Resources */,
+				08AD091727D8BC3D00015C50 /* Assets.xcassets in Resources */,
 				08AD090727D8BBDB00015C50 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,9 +171,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				08AD090427D8BBDB00015C50 /* ViewController.swift in Sources */,
+				08AD092327D8DBA300015C50 /* LandmarkItemCell.swift in Sources */,
+				08AD091D27D8BD8700015C50 /* DataManager.swift in Sources */,
 				08AD090027D8BBDB00015C50 /* AppDelegate.swift in Sources */,
 				08AD090227D8BBDB00015C50 /* SceneDelegate.swift in Sources */,
 				08AD090A27D8BBDB00015C50 /* iOS2CollectionView.xcdatamodeld in Sources */,
+				08AD091B27D8BCB800015C50 /* Landmark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
