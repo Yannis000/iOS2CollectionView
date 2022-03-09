@@ -8,51 +8,89 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
+        <!--View Controller-->
         <scene sceneID="c3o-kZ-2au">
             <objects>
-                <collectionViewController id="mtP-tc-KeT" sceneMemberID="viewController">
+                <collectionViewController id="mtP-tc-KeT" customClass="ViewController" customModule="iOS2CollectionView" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Xdd-lE-DFs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fnL-hs-9bI">
-                            <size key="itemSize" width="128" height="128"/>
+                            <size key="itemSize" width="339" height="218"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="Nje-Wk-W63" customClass="LandmarkItemCell" customModule="iOS2CollectionView" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favCell" id="Nje-Wk-W63" customClass="LandmarkFavItemCell" customModule="iOS2CollectionView" customModuleProvider="target">
+                                <rect key="frame" x="37.5" y="0.0" width="339" height="218"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SAM-PY-BaD">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="339" height="218"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="image" translatesAutoresizingMaskIntoConstraints="NO" id="BtD-a3-jgQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="image" translatesAutoresizingMaskIntoConstraints="NO" id="BtD-a3-jgQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="218"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="text" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBV-L7-XD2">
-                                            <rect key="frame" x="0.0" y="103" width="42" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="8" y="187.5" width="58.5" height="26.5"/>
+                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
+                                            <color key="textColor" systemColor="systemGray6Color"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="BtD-a3-jgQ" secondAttribute="bottom" id="7S2-63-sef"/>
+                                        <constraint firstAttribute="trailing" secondItem="BtD-a3-jgQ" secondAttribute="trailing" id="SsN-RV-4Oy"/>
+                                        <constraint firstItem="BtD-a3-jgQ" firstAttribute="top" secondItem="SAM-PY-BaD" secondAttribute="top" id="TAE-PD-Jvg"/>
+                                        <constraint firstAttribute="bottom" secondItem="BtD-a3-jgQ" secondAttribute="bottom" id="TdB-hm-jwF"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WBV-L7-XD2" secondAttribute="trailing" id="b0r-zn-Hza"/>
+                                        <constraint firstItem="BtD-a3-jgQ" firstAttribute="leading" secondItem="SAM-PY-BaD" secondAttribute="leading" id="eS2-an-kmb"/>
+                                        <constraint firstAttribute="bottom" secondItem="WBV-L7-XD2" secondAttribute="bottom" constant="4" id="s3E-AP-VTH"/>
+                                        <constraint firstItem="WBV-L7-XD2" firstAttribute="leading" secondItem="SAM-PY-BaD" secondAttribute="leading" constant="8" id="veU-ta-oMo"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <size key="customSize" width="339" height="218"/>
+                                <connections>
+                                    <outlet property="photo" destination="BtD-a3-jgQ" id="R6Y-J7-aXx"/>
+                                    <outlet property="title" destination="WBV-L7-XD2" id="rFn-RC-MjQ"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="categoryCell" id="ABC-IY-aBk" customClass="LandmarkCategoryItemCell" customModule="iOS2CollectionView" customModuleProvider="target">
+                                <rect key="frame" x="137.5" y="228" width="139" height="178"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gO5-rY-iOj">
+                                    <rect key="frame" x="0.0" y="0.0" width="139" height="178"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1nR-Of-FlY">
+                                            <rect key="frame" x="0.0" y="0.0" width="139" height="139"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="1nR-Of-FlY" secondAttribute="height" multiplier="1:1" id="Dey-5q-XvQ"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTL-Ff-tTO">
+                                            <rect key="frame" x="0.0" y="139" width="37.5" height="39"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="BtD-a3-jgQ" secondAttribute="bottom" id="TdB-hm-jwF"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WBV-L7-XD2" secondAttribute="trailing" id="ZSU-4c-YVZ"/>
-                                        <constraint firstItem="BtD-a3-jgQ" firstAttribute="leading" secondItem="SAM-PY-BaD" secondAttribute="leading" id="akh-2c-o0k"/>
-                                        <constraint firstItem="BtD-a3-jgQ" firstAttribute="top" secondItem="SAM-PY-BaD" secondAttribute="top" id="cW4-UY-Ol0"/>
-                                        <constraint firstItem="WBV-L7-XD2" firstAttribute="leading" secondItem="SAM-PY-BaD" secondAttribute="leading" id="gh8-cN-o15"/>
-                                        <constraint firstAttribute="trailing" secondItem="BtD-a3-jgQ" secondAttribute="trailing" id="qbp-qJ-jIe"/>
-                                        <constraint firstAttribute="bottom" secondItem="WBV-L7-XD2" secondAttribute="bottom" constant="4" id="s3E-AP-VTH"/>
+                                        <constraint firstItem="LTL-Ff-tTO" firstAttribute="leading" secondItem="gO5-rY-iOj" secondAttribute="leading" id="5bU-GB-Zk3"/>
+                                        <constraint firstAttribute="trailing" secondItem="1nR-Of-FlY" secondAttribute="trailing" id="DqV-WY-5Xn"/>
+                                        <constraint firstItem="LTL-Ff-tTO" firstAttribute="top" secondItem="1nR-Of-FlY" secondAttribute="bottom" id="X2I-T1-Izs"/>
+                                        <constraint firstAttribute="bottom" secondItem="LTL-Ff-tTO" secondAttribute="bottom" id="ctO-Hh-edg"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LTL-Ff-tTO" secondAttribute="trailing" id="efT-Br-Toa"/>
+                                        <constraint firstItem="1nR-Of-FlY" firstAttribute="top" secondItem="gO5-rY-iOj" secondAttribute="top" id="fdS-2K-s8H"/>
+                                        <constraint firstItem="1nR-Of-FlY" firstAttribute="leading" secondItem="gO5-rY-iOj" secondAttribute="leading" id="lX1-eb-kIX"/>
                                     </constraints>
                                 </collectionViewCellContentView>
+                                <size key="customSize" width="139" height="178"/>
                                 <connections>
-                                    <outlet property="image" destination="BtD-a3-jgQ" id="PA5-OY-Agn"/>
-                                    <outlet property="title" destination="WBV-L7-XD2" id="pzg-ej-Drd"/>
+                                    <outlet property="photo" destination="1nR-Of-FlY" id="yQw-qr-9o6"/>
+                                    <outlet property="title" destination="LTL-Ff-tTO" id="bcF-h9-T6c"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -64,12 +102,15 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bFe-59-117" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-142" y="108"/>
+            <point key="canvasLocation" x="-142.02898550724638" y="107.8125"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

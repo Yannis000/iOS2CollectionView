@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class LandmarkItemCell: UICollectionViewCell{
+class LandmarkFavItemCell: UICollectionViewCell{
     
+    @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var image: UIImageView!
 }
