@@ -11,6 +11,7 @@ class LandmarkCategoryItemCell: UICollectionViewCell{
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var photo: UIImageView!
+    @IBOutlet weak var featured: UIImageView!
     
     func configure(landmark: Landmark){
         title.text = landmark.name

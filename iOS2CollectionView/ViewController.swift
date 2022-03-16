@@ -88,7 +88,7 @@ class ViewController: UICollectionViewController {
                 case [1,0]:
                         header.title.text = "Lakes"
                 case [2,0]:
-                        header.title.text = "Rivers"
+                        header.title.text = "Rivers "
                 case [3,0]:
                         header.title.text = "Mountains"
                 default:
@@ -107,7 +107,9 @@ class ViewController: UICollectionViewController {
     
     private func createCategoryCell(category: Landmark.Category, indexPath: IndexPath) -> LandmarkCategoryItemCell{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! LandmarkCategoryItemCell
-        cell.configure(landmark: DataManager.sharedInstance.getCategory(category: category)[indexPath.item])
+        let item = DataManager.sharedInstance.getCategory(category: category)[indexPath.item]
+        cell.configure(landmark: item)
+        cell.featured.isHidden = item.isFeatured ? false : true
         return cell
     }
     
