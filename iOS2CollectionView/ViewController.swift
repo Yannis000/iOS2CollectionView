@@ -60,6 +60,8 @@ class ViewController: UICollectionViewController {
                 cell.configure(landmark: DataManager.sharedInstance.getFavorite()[indexPath.item])
                 if(self.view.traitCollection.horizontalSizeClass == .regular){
                     cell.photo.layer.cornerRadius = 15
+                }else{
+                    cell.photo.layer.cornerRadius = 0
                 }
                 return cell
             
@@ -216,6 +218,7 @@ class ViewController: UICollectionViewController {
             section.boundarySupplementaryItems = [header]
 
             return section
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
