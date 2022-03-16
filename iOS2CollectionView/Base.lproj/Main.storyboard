@@ -208,11 +208,6 @@
                                             <constraint firstItem="CXH-rS-a99" firstAttribute="top" secondItem="EXg-I7-Kd2" secondAttribute="bottom" constant="32" id="dtm-qo-WzQ"/>
                                             <constraint firstAttribute="trailing" secondItem="CXH-rS-a99" secondAttribute="trailing" constant="8" id="e3v-PP-Dwb"/>
                                         </constraints>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <mask key="constraints">
-                                                <exclude reference="K9Z-C5-roO"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>

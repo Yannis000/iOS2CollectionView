@@ -48,12 +48,6 @@ class ViewController: UICollectionViewController {
         collectionView.collectionViewLayout = createLayout()
         loadInitialState()
     }
-    
-//    private func createLayout(){
-//        let layout = UICollectionViewCompositionalLayout{sectionIndex, environment in
-//            guard let section = self.diffableDataSource.sectionIdentifier(for: )
-//        }
-//    }
 
     private func configureDataSource(){
         diffableDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
@@ -148,57 +142,38 @@ class ViewController: UICollectionViewController {
             
             switch section{
             case .favorite:
-                
-                if(self.view.traitCollection.horizontalSizeClass == .regular){
-                    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                    let formatRegular = self.view.traitCollection.horizontalSizeClass == .regular
+                    
+                    let itemSize = NSCollectionLayoutSize(widthDimension: formatRegular ? .fractionalWidth(0.5) : .fractionalWidth(1),
                                                           heightDimension: .absolute(250))
                     
                     let item = NSCollectionLayoutItem(layoutSize: itemSize)
                     
-                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                    let groupSize = NSCollectionLayoutSize(widthDimension: formatRegular ? .fractionalWidth(0.5) : .fractionalWidth(1),
                                                            heightDimension: .absolute(250))
                     
                     let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
                                                                    subitem: item,
                                                                    count: 1)
                     
-                    group.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 16)
+                    if(formatRegular){
+                        group.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 16)
+                    }
                     
                     let section = NSCollectionLayoutSection(group: group)
-                    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.10))
+                    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: formatRegular ? .fractionalHeight(0.10) : .absolute(50))
                     let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
                     
                     
                     section.orthogonalScrollingBehavior = .groupPaging
-                    section.contentInsets = .init(top: 0, leading: 16, bottom: 28, trailing: 0)
+                    if(formatRegular){
+                        section.contentInsets = .init(top: 0, leading: 16, bottom: 28, trailing: 0)
+                    }else{
+                        section.contentInsets.bottom = 28
+
+                    }
                     section.boundarySupplementaryItems = [header]
                     return section
-
-                }else{
-                    let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                          heightDimension: .absolute(250))
-                    
-                    let item = NSCollectionLayoutItem(layoutSize: itemSize)
-                    
-                    let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                           heightDimension: .absolute(250))
-                    
-                    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                                   subitem: item,
-                                                                   count: 1)
-                    
-                    let section = NSCollectionLayoutSection(group: group)
-                    let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.05))
-                    let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-                    
-                    
-                    section.orthogonalScrollingBehavior = .groupPaging
-                    section.contentInsets.bottom = 28
-                    section.boundarySupplementaryItems = [header]
-                    return section
-
-                }
-
             
             case .lakes, .mountains, .rivers:
                 return self.createCategoryLayout()
@@ -208,23 +183,31 @@ class ViewController: UICollectionViewController {
     }
     
     private func createCategoryLayout() -> NSCollectionLayoutSection{
-        if(self.view.traitCollection.horizontalSizeClass == .regular){
+        
+            let formatRegular = self.view.traitCollection.horizontalSizeClass == .regular
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
-                                                  heightDimension: .absolute(150))
+                                                  heightDimension: formatRegular ? .absolute(312) : .absolute(150))
             
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
-                                                   heightDimension: .absolute(150))
+                                                   heightDimension: formatRegular ? .absolute(312) : .absolute(150))
             
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                           subitem: item,
-                                                           count: 1)
+            let group : NSCollectionLayoutGroup
+            if(formatRegular){
+                group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize,
+                                                               subitem: item,
+                                                               count: 2)
+            }else{
+                group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                               subitem: item,
+                                                               count: 1)
+            }
             
             let section = NSCollectionLayoutSection(group: group)
             
-            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.10))
+            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: formatRegular ? .fractionalHeight(0.10) : .absolute(50))
             let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
 
             section.orthogonalScrollingBehavior = .continuous
@@ -233,32 +216,6 @@ class ViewController: UICollectionViewController {
             section.boundarySupplementaryItems = [header]
 
             return section
-        }else{
-
-            let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
-                                                  heightDimension: .absolute(150))
-            
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            
-            let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(130),
-                                                   heightDimension: .absolute(150))
-            
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
-                                                           subitem: item,
-                                                           count: 1)
-            
-            let section = NSCollectionLayoutSection(group: group)
-            
-            let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(0.05))
-            let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-
-            section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = 12
-            section.contentInsets = .init(top: 0, leading: 12, bottom: 32, trailing: 12)
-            section.boundarySupplementaryItems = [header]
-
-            return section
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
