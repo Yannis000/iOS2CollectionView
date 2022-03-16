@@ -11,4 +11,11 @@ class LandmarkCategoryItemCell: UICollectionViewCell{
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var photo: UIImageView!
+    
+    func configure(landmark: Landmark){
+        title.text = landmark.name
+        photo.image = landmark.image
+        photo.layer.cornerRadius = 8
+    }
+    
 }
